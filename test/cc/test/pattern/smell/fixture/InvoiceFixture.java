@@ -1,5 +1,6 @@
 package cc.test.pattern.smell.fixture;
 
+import cc.test.pattern.model.Customer;
 import cc.test.pattern.model.Invoice;
 
 public class InvoiceFixture {
@@ -11,7 +12,12 @@ public class InvoiceFixture {
 	}
 
 	public Invoice build() {
-		return null;
+		return invoice;
+	}
+
+	public InvoiceFixture withCustomer(Customer customer) {
+		this.invoice.setCustomer(customer);
+		return this;
 	}
 
 }

@@ -7,9 +7,9 @@ import cc.test.pattern.service.InvoiceService;
 
 public class Invoice {
 
-	private InvoiceService service;
+	private final InvoiceService service;
 	private Customer customer;
-	private List<InvoiceItem> products;
+	private final List<InvoiceItem> products;
 
 	public Invoice(Customer customer) {
 		this.customer = customer;
@@ -18,7 +18,8 @@ public class Invoice {
 	}
 
 	public Invoice() {
-
+		this.products = new ArrayList<InvoiceItem>();
+		this.service = new InvoiceService();
 	}
 
 	public void addProduct(Product product, Integer quantity) {
@@ -35,6 +36,10 @@ public class Invoice {
 
 	public boolean bill() {
 		return service.doBill(this);
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
 }
