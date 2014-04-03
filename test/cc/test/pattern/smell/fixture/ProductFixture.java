@@ -1,5 +1,7 @@
 package cc.test.pattern.smell.fixture;
 
+import java.math.BigDecimal;
+
 import cc.test.pattern.model.Product;
 
 public class ProductFixture {
@@ -11,6 +13,11 @@ public class ProductFixture {
 
 	public Product build() {
 		return product;
+	}
+
+	public ProductFixture withPercentualDiscount(BigDecimal discount) {
+		this.product.setPercentualDiscount(discount);
+		return this;
 	}
 
 }

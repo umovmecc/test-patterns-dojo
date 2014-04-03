@@ -77,13 +77,22 @@ public class BadTestSmell {
 	}
 
 	@Test
-	public void shouldCreateAInvoceItemBasedOnProduct() {
-		Product product = ProductFixture.get().build();
+	public void shouldCreateAInvoiceItemBasedOnProduct() {
+		BigDecimal discount = new BigDecimal("19.99");
+		Product product = ProductFixture.get().withPercentualDiscount(discount).build();
 		Invoice invoice = InvoiceFixture.get().build();
 
 		invoice.addProduct(product, 1);
 
 		assertEquals(1, invoice.getProducts().size());
+		InvoiceItem item = invoice.getProducts().get(0);
+
+		assertEquals(invoice, item.getInvoice());
+		assertEquals(product, item.getProduct());
+		assertEquals(1, item.getQuantity().longValue());
+		assertEquals(discount, item.getPercentDiscount());
+		assertEquals(customer, item.getInvoice().getCustomer());
+
 	}
 
 }

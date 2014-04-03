@@ -29,4 +29,8 @@ public class Product {
 	public int getId() {
 		return id;
 	}
+
+	public void setPercentualDiscount(BigDecimal discount) {
+		this.percentDiscount = discount;
+	}
 }
