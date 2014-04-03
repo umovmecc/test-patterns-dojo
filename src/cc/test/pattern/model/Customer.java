@@ -3,11 +3,11 @@ package cc.test.pattern.model;
 
 public class Customer {
 
-	private final int id;
-	private final String name;
-	private final String midleName;
-	private final Address billingAddress;
-	private final Address shippingAddress;
+	private int id;
+	private String name;
+	private String midleName;
+	private Address billingAddress;
+	private Address shippingAddress;
 
 	public Customer(int id, String name, String midleName, Address billingAddress, Address shippingAddress) {
 		this.id = id;
@@ -15,6 +15,9 @@ public class Customer {
 		this.midleName = midleName;
 		this.billingAddress = billingAddress;
 		this.shippingAddress = shippingAddress;
+	}
+
+	public Customer() {
 	}
 
 	public int getId() {

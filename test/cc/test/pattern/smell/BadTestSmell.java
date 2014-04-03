@@ -14,6 +14,7 @@ import cc.test.pattern.model.Customer;
 import cc.test.pattern.model.Invoice;
 import cc.test.pattern.model.InvoiceItem;
 import cc.test.pattern.model.Product;
+import cc.test.pattern.smell.fixture.CustomerFixture;
 import cc.test.pattern.smell.fixture.InvoiceFixture;
 
 public class BadTestSmell {
@@ -65,9 +66,7 @@ public class BadTestSmell {
 
 	@Test(expected = BusinessException.class)
 	public void shouldThrowBusinessExceptionWhenBillingANewInvoiceOnceThereIsNoProductsToProcess() {
-		billingAddress = new Address("Rua Fernando de Noronha", "50", "Cachoeirinha", "Vista Alegre", "94955170");
-		shippingAddress = new Address("Rua Rio Grande do Norote", "89", "Cachoeirinha", "Vista Alegre", "94955350");
-		customer = new Customer(999, "Saraiva", "Mauricio", billingAddress, shippingAddress);
+		customer = CustomerFixture.get().build();
 		invoice = InvoiceFixture.get().withCustomer(customer).build();
 		invoice.bill();
 	}
