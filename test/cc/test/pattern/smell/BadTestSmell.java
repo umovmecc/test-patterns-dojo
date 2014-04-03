@@ -6,9 +6,9 @@ import static org.junit.Assert.assertTrue;
 import java.math.BigDecimal;
 import java.util.List;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
+import cc.test.pattern.exception.BusinessException;
 import cc.test.pattern.model.Address;
 import cc.test.pattern.model.Customer;
 import cc.test.pattern.model.Invoice;
@@ -62,11 +62,13 @@ public class BadTestSmell {
 		}
 	}
 
-	@Test
-	@Ignore
+	@Test(expected = BusinessException.class)
 	public void shouldThrowBusinessExceptionWhenBillingANewInvoiceOnceThereIsNoProductsToProcess() {
-
-
+		billingAddress = new Address("Rua Fernando de Noronha", "50", "Cachoeirinha", "Vista Alegre", "94955170");
+		shippingAddress = new Address("Rua Rio Grande do Norote", "89", "Cachoeirinha", "Vista Alegre", "94955350");
+		customer = new Customer(999, "Saraiva", "Mauricio", billingAddress, shippingAddress);
+		invoice = new Invoice(customer);
+		invoice.bill();
 	}
 
 }
