@@ -7,14 +7,18 @@ import cc.test.pattern.service.InvoiceService;
 
 public class Invoice {
 
-	private final InvoiceService service;
-	private final Customer customer;
-	private final List<InvoiceItem> products;
+	private InvoiceService service;
+	private Customer customer;
+	private List<InvoiceItem> products;
 
 	public Invoice(Customer customer) {
 		this.customer = customer;
 		this.products = new ArrayList<InvoiceItem>();
 		this.service = new InvoiceService();
+	}
+
+	public Invoice() {
+
 	}
 
 	public void addProduct(Product product, Integer quantity) {
