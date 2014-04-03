@@ -4,9 +4,13 @@ import java.math.BigDecimal;
 
 public class Product {
 
-	private final BigDecimal percentDiscount;
-	private final int id;
-	private final String description;
+	private BigDecimal percentDiscount;
+	private int id;
+	private String description;
+
+	public Product() {
+
+	}
 
 	public Product(int id, String description, BigDecimal percentDiscount) {
 		this.id = id;

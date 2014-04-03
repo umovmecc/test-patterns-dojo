@@ -16,6 +16,7 @@ import cc.test.pattern.model.InvoiceItem;
 import cc.test.pattern.model.Product;
 import cc.test.pattern.smell.fixture.CustomerFixture;
 import cc.test.pattern.smell.fixture.InvoiceFixture;
+import cc.test.pattern.smell.fixture.ProductFixture;
 
 public class BadTestSmell {
 
@@ -73,7 +74,8 @@ public class BadTestSmell {
 
 	@Test
 	public void shouldSuccessBillInvoice() {
-		Invoice invoice = InvoiceFixture.get().withProduct(new Product(0, "", null)).build();
+		product = ProductFixture.get().build();
+		Invoice invoice = InvoiceFixture.get().withProduct(product).build();
 		assertTrue(invoice.bill());
 	}
 
