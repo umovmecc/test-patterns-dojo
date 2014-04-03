@@ -50,9 +50,6 @@ public class BadTestSmell {
 				assertEquals("discount", new BigDecimal("19.99"), item.getPercentDiscount());
 				assertEquals("customer", customer, item.getInvoice().getCustomer());
 
-				// check billing
-				assertTrue("billed", invoice.bill());
-
 			} else {
 				assertTrue("Invoice should have 1 item", false);
 			}
@@ -77,6 +74,16 @@ public class BadTestSmell {
 		product = ProductFixture.get().build();
 		Invoice invoice = InvoiceFixture.get().withProduct(product).build();
 		assertTrue(invoice.bill());
+	}
+
+	@Test
+	public void shouldCreateAInvoceItemBasedOnProduct() {
+		Product product = ProductFixture.get().build();
+		Invoice invoice = InvoiceFixture.get().build();
+
+		invoice.addProduct(product, 1);
+
+		assertEquals(1, invoice.getProducts().size());
 	}
 
 }
