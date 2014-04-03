@@ -71,4 +71,10 @@ public class BadTestSmell {
 		invoice.bill();
 	}
 
+	@Test
+	public void shouldSuccessBillInvoice() {
+		Invoice invoice = InvoiceFixture.get().withProduct(new Product(0, "", null)).build();
+		assertTrue(invoice.bill());
+	}
+
 }
